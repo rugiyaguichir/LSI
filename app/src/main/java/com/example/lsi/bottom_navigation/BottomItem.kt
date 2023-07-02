@@ -7,4 +7,5 @@ sealed class BottomItem(val title: String, val iconId: Int, val route: String){
     object Screen2: BottomItem("Services", R.drawable.services, "screen_2")
     object Screen3: BottomItem("Contacts", R.drawable.contacts, "screen_3")
 
+    
 }
