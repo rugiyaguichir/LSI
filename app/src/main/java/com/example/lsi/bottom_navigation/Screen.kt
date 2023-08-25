@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -23,7 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lsi.R
@@ -34,7 +32,7 @@ fun Screen1() {
 
     Column {
         Image(
-            painter = painterResource(id = R.drawable.logo),
+            painter = painterResource(id = R.drawable.logo2),
             contentDescription = "Logo",
             modifier = Modifier
                 .padding(5.dp)
@@ -46,13 +44,13 @@ fun Screen1() {
                 .fillMaxSize()
                 .padding(5.dp),
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
+        ) {
             Text(
                 text = "About LSI",
                 modifier = Modifier
                     .padding(start = 10.dp, top = 10.dp)
                     .fillMaxWidth(),
-                style = androidx.compose.ui.text.TextStyle(
+                style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 28.sp
                 )
@@ -87,7 +85,7 @@ fun Screen1() {
 
                                     Box(modifier = Modifier.padding(16.dp)) {
                                         Image(
-                                            painter = painterResource(id = R.drawable.map),
+                                            painter = painterResource(id = R.drawable.map2),
                                             contentDescription = "Map",
                                             modifier = Modifier
                                                 .size(220.dp)
@@ -110,7 +108,7 @@ fun Screen1() {
 fun Screen2() {
     Column {
         Image(
-            painter = painterResource(id = R.drawable.logo),
+            painter = painterResource(id = R.drawable.logo2),
             contentDescription = "Logo",
             modifier = Modifier
                 .padding(5.dp)
@@ -123,7 +121,7 @@ fun Screen2() {
                 modifier = Modifier
                     .padding(start = 10.dp, top = 10.dp)
                     .fillMaxWidth(),
-                style = androidx.compose.ui.text.TextStyle(
+                style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 28.sp
                 )
@@ -181,7 +179,7 @@ fun Screen2() {
 fun Screen3() {
     Column {
         Image(
-            painter = painterResource(id = R.drawable.logo),
+            painter = painterResource(id = R.drawable.logo2),
             contentDescription = "Logo",
             modifier = Modifier
                 .padding(5.dp)
@@ -195,115 +193,126 @@ fun Screen3() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "CONTACT US",
-                modifier = Modifier.padding(
-                    top = 50.dp
-                ),
-                style = TextStyle(fontSize = 30.sp),
-                color = Color.Black
-            )
-            Card(
+                text = "Contact Us",
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(15.dp),
-                backgroundColor = Purple80,
-                elevation = 0.dp,
-                shape = RoundedCornerShape(10.dp)
+                    .padding(start = 10.dp, top = 10.dp)
+                    .fillMaxWidth(),
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 28.sp
+                )
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)
             ) {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(),
+                    shape = RoundedCornerShape(15.dp),
+                    elevation = 5.dp
                 ) {
-                    Text(
-                        text = "Luke Service International",
-                        modifier = Modifier.padding(
-                            bottom = 15.dp,
-                            top = 15.dp
-                        ),
-                        style = TextStyle(fontSize = 20.sp),
-                        color = Color.Black
-                    )
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
+                    Box(modifier = Modifier.padding(16.dp)) {
                         Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(5.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
                         ) {
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                elevation = 0.dp
+                            ) {
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Text(
+                                        text = "Luke Service International",
+                                        modifier = Modifier.padding(
+                                            bottom = 10.dp,
+                                        ),
+                                        style = TextStyle(fontSize = 20.sp),
+                                        color = Color.Black
+                                    )
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceEvenly
+                                    ) {
+                                        Column(
+                                        ) {
+                                            Text(
+                                                text = "Address:",
+                                                style = TextStyle(fontSize = 10.sp),
+                                                color = Color.Black
+                                            )
+                                            Text(
+                                                text = "Tokmok",
+                                                modifier = Modifier.padding(bottom = 10.dp),
+                                                style = TextStyle(fontSize = 15.sp),
+                                                color = Color.Black
+                                            )
+                                            Text(
+                                                text = "Home Address:",
+                                                style = TextStyle(fontSize = 10.sp),
+                                                color = Color.Black
+                                            )
+                                            Text(
+                                                text = "Shamsinskaya 141a",
+                                                modifier = Modifier.padding(bottom = 10.dp),
+                                                style = TextStyle(fontSize = 15.sp),
+                                                color = Color.Black
+                                            )
+                                        }
+                                        Column() {
+                                            Text(
+                                                text = "+996555555555",
+                                                style = TextStyle(fontSize = 15.sp),
+                                                color = Color.Black
+                                            )
+                                            Text(
+                                                text = "+996302222222",
+                                                style = TextStyle(fontSize = 15.sp),
+                                                color = Color.Black
+                                            )
+                                            Text(
+                                                text = "wwww.google.com",
+                                                style = TextStyle(fontSize = 15.sp),
+                                                color = Color.Black
+                                            )
+                                        }
+                                        Image(
+                                            painter = painterResource(id = R.drawable.logos),
+                                            contentDescription = "logo",
+                                            modifier = Modifier.size(70.dp)
+                                        )
+                                    }
+                                }
+                            }
                             Text(
-                                text = "Address:",
-                                modifier = Modifier.padding(),
-                                style = TextStyle(fontSize = 10.sp),
+                                text = "Google map",
+                                modifier = Modifier.padding(15.dp),
+                                style = TextStyle(fontSize = 20.sp),
                                 color = Color.Black
                             )
-                            Text(
-                                text = "Tokmok",
-                                modifier = Modifier.padding(bottom = 10.dp),
-                                style = TextStyle(fontSize = 15.sp),
-                                color = Color.Black
-                            )
-                            Text(
-                                text = "Home Address:",
-                                modifier = Modifier.padding(),
-                                style = TextStyle(fontSize = 10.sp),
-                                color = Color.Black
-                            )
-                            Text(
-                                text = "Shamsinskaya 141a",
-                                modifier = Modifier.padding(bottom = 10.dp),
-                                style = TextStyle(fontSize = 15.sp),
-                                color = Color.Black
-                            )
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                elevation = 0.dp,
+                            ) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.google_map),
+                                    contentDescription = "map",
+                                    modifier = Modifier.size(250.dp)
+                                )
+                            }
                         }
-                        Column() {
-                            Text(
-                                text = "+996555555555",
-                                modifier = Modifier.padding(
-                                ),
-                                style = TextStyle(fontSize = 15.sp),
-                                color = Color.Black
-                            )
-                            Text(
-                                text = "+996302222222",
-                                modifier = Modifier.padding(
-                                ),
-                                style = TextStyle(fontSize = 15.sp),
-                                color = Color.Black
-                            )
-                            Text(
-                                text = "wwww.google.com",
-                                modifier = Modifier.padding(
-                                ),
-                                style = TextStyle(fontSize = 15.sp),
-                                color = Color.Black
-                            )
-                        }
-                        Image(
-                            painter = painterResource(id = R.drawable.logo),
-                            contentDescription = "logo",
-                            modifier = Modifier.size(70.dp)
-                        )
                     }
                 }
-            }
-            Text(
-                text = "Google map",
-                modifier = Modifier.padding(15.dp),
-                style = TextStyle(fontSize = 20.sp),
-                color = Color.Black
-            )
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(15.dp),
-                elevation = 0.dp,
-                backgroundColor = Purple80,
-                shape = RoundedCornerShape(10.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.map),
-                    contentDescription = "map",
-                    modifier = Modifier.size(250.dp)
-                )
             }
         }
     }
