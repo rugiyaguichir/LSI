@@ -21,6 +21,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.Navigation
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.lsi.R
 import com.example.lsi.ui.theme.Purple80
@@ -36,4 +39,17 @@ fun MainScreen() {
         ) {
             NavGraph(navHostController = navController)
         }
+}
+
+@Composable
+fun Navigation(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = BottomItem.Screen2.route){
+        composable(route = BottomItem.Screen2.route){
+            Screen2()
+        }
+        composable(route = BottomItem.Screen4.route){
+            Screen4()
+        }
+    }
 }

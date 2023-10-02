@@ -6,6 +6,6 @@ sealed class BottomItem(val title: String, val iconId: Int, val route: String){
     object Screen1: BottomItem("About us", R.drawable.home, "screen_1")
     object Screen2: BottomItem("Services", R.drawable.services, "screen_2")
     object Screen3: BottomItem("Contacts", R.drawable.contacts, "screen_3")
-
+    object Screen4: BottomItem("Services", R.drawable.services, "screen_4")
     
 }

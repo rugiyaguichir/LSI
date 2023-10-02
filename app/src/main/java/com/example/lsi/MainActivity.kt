@@ -10,6 +10,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.lsi.bottom_navigation.MainScreen
+import com.example.lsi.bottom_navigation.Navigation
 import com.example.lsi.bottom_navigation.Screen1
 import com.example.lsi.bottom_navigation.Screen2
 import com.example.lsi.bottom_navigation.Screen3

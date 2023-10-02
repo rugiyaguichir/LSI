@@ -1,6 +1,7 @@
 package com.example.lsi.bottom_navigation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -24,7 +28,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.lsi.ItemRowModel
+import com.example.lsi.MyRow
 import com.example.lsi.R
+import com.example.lsi.ui.theme.Gray100
 import com.example.lsi.ui.theme.Purple80
 
 @Composable
@@ -115,9 +123,14 @@ fun Screen2() {
                 .fillMaxWidth()
                 .size(50.dp)
         )
-        Column {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(5.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
-                text = "About LSI",
+                text = "Our services",
                 modifier = Modifier
                     .padding(start = 10.dp, top = 10.dp)
                     .fillMaxWidth(),
@@ -139,32 +152,42 @@ fun Screen2() {
                     shape = RoundedCornerShape(15.dp),
                     elevation = 5.dp
                 ) {
-                    Box(modifier = Modifier.padding(16.dp)) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Column {
-                                Text(text = "The headquarter of LSI is located in Los Angeles, California, United States; responsible for coordination, administration, development, and training. The operations of LSI is managed by its Advisory Committee, Board of Directors, Ministry Director, Executive Committee, and co-workers.")
+                    Box(modifier = Modifier.padding(5.dp)) {
+                        LazyColumn(modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Gray100),
+                        )
 
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Text(
-                                        text = "Our Service Locations",
-                                        modifier = Modifier
-                                            .weight(1f)
-                                            .padding(end = 8.dp),
-                                        fontSize = 20.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-
-                                    Box(modifier = Modifier.padding(16.dp)) {
-                                        Image(
-                                            painter = painterResource(id = R.drawable.map),
-                                            contentDescription = "Map",
-                                            modifier = Modifier
-                                                .size(220.dp)
-                                                .clip(shape = RoundedCornerShape(15.dp))
-                                                .clickable { /* Handle image click */ }
-                                        )
-                                    }
-                                }
+                        {
+                            itemsIndexed(
+                                listOf(
+                                    ItemRowModel(R.drawable.photo_1, "Primary Care", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions."),
+                                    ItemRowModel(R.drawable.photo_2, "Massage", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions."),
+                                    ItemRowModel(R.drawable.photo_3, "Gynecology", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions."),
+                                    ItemRowModel(R.drawable.photo_4, "Pediatrics", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions."),
+                                    ItemRowModel(R.drawable.photo_5, "Optometry", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions."),
+                                    ItemRowModel(R.drawable.photo_6, "Laboratory", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions."),
+                                    ItemRowModel(R.drawable.photo_7, "Pharmacy", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions."),
+                                    ItemRowModel(R.drawable.photo_8, "Dentistry ", "We are committed to provide affordable medical " +
+                                            "services, language education, vocational training, " +
+                                            "professional training, counseling, and economic assistance to the people in these regions.")
+                                )
+                            ){_, item->
+                               MyRow(item = item)         
                             }
                         }
                     }
@@ -316,4 +339,7 @@ fun Screen3() {
             }
         }
     }
+}
+@Composable
+fun Screen4() {
 }
