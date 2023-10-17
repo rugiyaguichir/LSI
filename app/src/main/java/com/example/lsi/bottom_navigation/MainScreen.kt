@@ -14,6 +14,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,30 +27,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.lsi.R
+import com.example.lsi.data.DoctorsModel
 import com.example.lsi.ui.theme.Purple80
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
-fun MainScreen() {
+fun MainScreen(doctorsList: MutableState<List<DoctorsModel>>) {
+
+    val list = listOf<DoctorsModel>(
+
+    )
     val navController = rememberNavController()
         Scaffold(
             bottomBar = {
                 BottomNavigation(navController = navController)
             }
         ) {
-            NavGraph(navHostController = navController)
+            NavGraph(navHostController = navController, doctorsList, list)
         }
-}
-
-@Composable
-fun Navigation(){
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = BottomItem.Screen2.route){
-        composable(route = BottomItem.Screen2.route){
-            Screen2()
-        }
-        composable(route = BottomItem.Screen4.route){
-            Screen4()
-        }
-    }
 }

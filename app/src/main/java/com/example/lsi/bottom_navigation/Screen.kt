@@ -3,6 +3,7 @@ package com.example.lsi.bottom_navigation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,8 +19,10 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ListItem
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,9 +33,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.lsi.ItemRowModel
 import com.example.lsi.MyRow
 import com.example.lsi.R
+import com.example.lsi.data.DoctorsModel
 import com.example.lsi.ui.theme.Gray100
 import com.example.lsi.ui.theme.Purple80
 
@@ -72,7 +78,7 @@ fun Screen1() {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight(),
+                        .height(645.dp),
                     shape = RoundedCornerShape(15.dp),
                     elevation = 5.dp
                 ) {
@@ -113,7 +119,7 @@ fun Screen1() {
 }
 
 @Composable
-fun Screen2() {
+fun Screen2(doctorsList: MutableState<List<DoctorsModel>>, navController: NavController, list: List<DoctorsModel>) {
     Column {
         Image(
             painter = painterResource(id = R.drawable.logo2),
@@ -156,38 +162,11 @@ fun Screen2() {
                         LazyColumn(modifier = Modifier
                             .fillMaxWidth()
                             .background(Gray100),
-                        )
-
-                        {
+                        ) {
                             itemsIndexed(
-                                listOf(
-                                    ItemRowModel(R.drawable.photo_1, "Primary Care", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions."),
-                                    ItemRowModel(R.drawable.photo_2, "Massage", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions."),
-                                    ItemRowModel(R.drawable.photo_3, "Gynecology", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions."),
-                                    ItemRowModel(R.drawable.photo_4, "Pediatrics", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions."),
-                                    ItemRowModel(R.drawable.photo_5, "Optometry", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions."),
-                                    ItemRowModel(R.drawable.photo_6, "Laboratory", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions."),
-                                    ItemRowModel(R.drawable.photo_7, "Pharmacy", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions."),
-                                    ItemRowModel(R.drawable.photo_8, "Dentistry ", "We are committed to provide affordable medical " +
-                                            "services, language education, vocational training, " +
-                                            "professional training, counseling, and economic assistance to the people in these regions.")
-                                )
-                            ){_, item->
-                               MyRow(item = item)         
+                                doctorsList.value
+                            ){_, item ->
+                               MyRow(item = item, navController, list)
                             }
                         }
                     }
